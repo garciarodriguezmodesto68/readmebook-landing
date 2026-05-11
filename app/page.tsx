@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+
 import {
   Shield,
   Mic,
@@ -13,7 +15,6 @@ import {
   Music,
   Database,
   ArrowRight,
-  CheckCircle2
 } from "lucide-react";
 
 const voiceCommands = [
@@ -35,6 +36,13 @@ const fadeIn = {
 };
 
 export default function Home() {
+  const triggerRef = useRef(null);
+  
+  // Detección en el 50% de la pantalla (franja estrecha para evitar el efecto "fugaz")
+  const isCentered = useInView(triggerRef, {
+    margin: "-45% 0px -45% 0px"
+  });
+
   return (
     <main className="bg-[#F4F1EA] text-[#2B1712] overflow-hidden">
 
@@ -42,156 +50,196 @@ export default function Home() {
       <nav className="fixed top-0 w-full z-50 bg-[#F4F1EA]/80 backdrop-blur-md border-b border-[#D8D2C8]/50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#A17808] flex items-center justify-center text-white shadow-lg">
-              📚
+            <div className="flex items-center gap-3">
+              {/* Contenedor exclusivo para la imagen del logo */}
+              <div className="relative w-10 h-10 shadow-lg shrink-0">
+                <Image
+                  src="/images/app_icon.png"
+                  alt="ReadMeBook Logo"
+                  fill
+                  sizes="40px"
+                  className="object-contain rounded-xl"
+                />
+              </div>
+
+              {/* El texto va fuera del div anterior para alinearse a su derecha */}
+              <span className="text-xl font-bold tracking-tight">
+                ReadMeBook
+              </span>
             </div>
-            <span className="text-xl font-bold tracking-tight">ReadMeBook</span>
           </div>
-          <button className="bg-[#A17808] text-white px-6 py-2.5 rounded-2xl hover:bg-[#8B6907] transition-all active:scale-95 font-medium shadow-md">
+          <button className="bg-[#A17808] text-white px-4 py-2 md:px-6 md:py-2.5 rounded-2xl hover:bg-[#8B6907] active:scale-95 transition-all duration-300 font-medium shadow-md text-sm md:text-base">
             Descargar App
           </button>
         </div>
       </nav>
 
       {/* HERO SECTION */}
-      <section className="max-w-7xl mx-auto px-6 pt-32 pb-24 lg:pt-48 lg:pb-32">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div 
+      <section className="relative max-w-7xl mx-auto px-6 pt-32 pb-24 lg:pt-48 lg:pb-32">
+        {/* AJUSTE: items-start para que el título aparezca arriba */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+          {/* LEFT CONTENT */}
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            className="lg:pt-4" // Espaciado extra para compensar el navbar
           >
-            <div className="inline-flex items-center gap-2 bg-[#E7E0D3] px-4 py-2 rounded-full mb-8 text-sm font-medium border border-[#D8D2C8]">
+            <div className="inline-flex items-center gap-2 bg-[#E7E0D3] px-4 py-2 rounded-full mb-8 text-xs md:text-sm font-medium border border-[#D8D2C8]">
               <Shield size={16} className="text-[#A17808]" />
               100% Local · Sin nube · Privado
             </div>
-            <h1 className="text-5xl lg:text-7xl font-bold leading-[1.1] mb-8 tracking-tight">
-              Tu biblioteca inteligente. <br />
-              <span className="text-[#A17808]">Privada.</span> <br />
+
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] mb-8 tracking-tight">
+              Tu biblioteca inteligente.
+              <br />
+              <span className="text-[#A17808]">Privada.</span>
+              <br />
               Controlada por voz.
             </h1>
-            <p className="text-xl text-[#6B5C57] leading-relaxed mb-10 max-w-xl">
-              Lee, escucha, organiza y controla tus libros sin depender de servidores externos. La potencia de la IA, en tu dispositivo.
+
+            <p className="text-lg md:text-xl text-[#6B5C57] leading-relaxed mb-10 max-w-xl">
+              Lee, escucha, organiza y controla tus libros
+              sin depender de servidores externos.
+              La potencia de la IA, en tu dispositivo.
             </p>
-            
+
             <div className="flex flex-wrap gap-4 mb-12">
-              <button className="bg-[#2B1712] text-white px-8 py-4 rounded-2xl text-lg font-medium hover:bg-black transition-all shadow-xl flex items-center gap-2">
-                Descargar ahora <ArrowRight size={20} />
+              <button className="w-full sm:w-auto bg-[#2B1712] text-white px-8 py-4 rounded-2xl text-lg font-medium hover:bg-black hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 shadow-xl flex items-center justify-center gap-2">
+                Descargar ahora
+                <ArrowRight size={20} />
               </button>
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <div className="bg-white border border-[#E5DED3] px-4 py-3 rounded-2xl flex items-center gap-2 shadow-sm text-sm font-medium">
-                <BookOpen size={18} className="text-[#A17808]" /> Biblioteca Inteligente
-              </div>
-              <div className="bg-white border border-[#E5DED3] px-4 py-3 rounded-2xl flex items-center gap-2 shadow-sm text-sm font-medium">
-                <Mic size={18} className="text-[#A17808]" /> Lectura por Voz
-              </div>
-              <div className="bg-white border border-[#E5DED3] px-4 py-3 rounded-2xl flex items-center gap-2 shadow-sm text-sm font-medium">
-                <Languages size={18} className="text-[#A17808]" /> Traducción Global
-              </div>
+              {[
+                { icon: <BookOpen size={18} />, text: "Biblioteca Inteligente" },
+                { icon: <Mic size={18} />, text: "Lectura por Voz" },
+                { icon: <Languages size={18} />, text: "Traducción Global" }
+              ].map((item, i) => (
+                <div key={i} className="bg-white border border-[#E5DED3] px-4 py-3 rounded-2xl flex items-center gap-2 shadow-sm text-xs md:text-sm font-medium">
+                  <span className="text-[#A17808]">{item.icon}</span>
+                  {item.text}
+                </div>
+              ))}
             </div>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
-            <div className="relative z-10 bg-white rounded-[48px] p-4 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.15)] border border-[#E5DED3]">
+          {/* RIGHT CONTENT (IMAGE + FLOATING CARD) */}
+          <div className="relative mt-12 lg:mt-0 flex items-start justify-center">
+            
+            {/* TRIGGER: Ocupa el área de la imagen para detectar el scroll */}
+            <div 
+              ref={triggerRef} 
+              className="absolute inset-0 w-full h-full pointer-events-none z-0" 
+            />
+
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative z-10 bg-white rounded-[32px] md:rounded-[48px] p-3 md:p-4 shadow-2xl border border-[#E5DED3]"
+            >
               <Image
                 src="/images/library.png"
                 alt="ReadMeBook Library"
                 width={500}
                 height={1000}
-                className="rounded-[36px]"
+                priority
+                className="rounded-[24px] md:rounded-[36px] w-full h-auto"
               />
-            </div>
-            
-            {/* FLOATING CARD */}
-            <motion.div 
-              initial={{ x: 20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="absolute -bottom-10 -left-10 bg-[#6B4EFF] text-white p-6 rounded-3xl shadow-2xl z-20 max-w-[260px] border border-white/20"
+            </motion.div>
+
+            {/* FLOATING CARD - Ajustada a la izquierda agresivamente */}
+            <motion.div
+              animate={{
+                opacity: isCentered ? 1 : 0,
+                x: isCentered ? -60 : 0, 
+                y: [0, -10, 0] 
+              }}
+              transition={{
+                opacity: { duration: 0.4 },
+                x: { duration: 0.5 },
+                y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+              }}
+              // md:-left-48 para que no tape la imagen y flote a la izquierda
+              className="absolute bottom-10 -left-6 md:-left-48 bg-[#2B1712] text-[#F4F1EA] p-4 md:p-6 rounded-2xl md:rounded-3xl shadow-2xl z-20 max-w-[180px] md:max-w-[260px] border border-white/20"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <Headphones className="text-white/80" />
-                <span className="font-semibold text-lg">Lectura Asistida</span>
+              <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                <Headphones size={20} className="text-white/80" />
+                <span className="font-semibold text-sm md:text-lg">Lectura Asistida</span>
               </div>
-              <div className="flex flex-wrap gap-2 text-sm font-medium">
-                <span className="bg-white/20 px-3 py-1 rounded-full">“Acelera”</span>
-                <span className="bg-white/20 px-3 py-1 rounded-full">“Siguiente”</span>
-                <span className="bg-white/20 px-3 py-1 rounded-full">“Deletrea”</span>
+              <div className="flex flex-wrap gap-1.5 md:gap-2 text-[10px] md:text-sm font-medium">
+                {["“Acelera”", "“Siguiente”", "“Deletrea”"].map((cmd) => (
+                  <span key={cmd} className="bg-[#F4F1EA]/10 border border-[#F4F1EA]/10 px-2 md:px-3 py-1 rounded-full">
+                    {cmd}
+                  </span>
+                ))}
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* PRIVACY SECTION */}
-      <section className="bg-[#E7E0D3]/40 py-32">
+      <section className="bg-[#E7E0D3]/40 py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div {...fadeIn} className="max-w-3xl mb-16">
             <p className="text-[#A17808] font-bold tracking-widest text-sm mb-4 uppercase">Privacidad Real</p>
-            <h2 className="text-4xl lg:text-6xl font-bold mb-6 tracking-tight">Tus libros son tuyos.<br />De verdad.</h2>
-            <p className="text-xl text-[#6B5C57] leading-relaxed">
-              ReadMeBook funciona completamente en local. Tus libros, notas y progresos nunca dependen de servidores externos ni de suscripciones que rastrean tus hábitos.
+            <h2 className="text-3xl md:text-6xl font-bold mb-6 tracking-tight">Tus libros son tuyos.<br />De verdad.</h2>
+            <p className="text-lg md:text-xl text-[#6B5C57] leading-relaxed">
+              ReadMeBook funciona completamente en local. Tus libros nunca dependen de servidores externos.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {[
-              { icon: <Lock size={32} />, title: "Biblioteca Local", desc: "Todos tus archivos permanecen cifrados en la memoria de tu dispositivo." },
-              { icon: <Database size={32} />, title: "Backup Manual", desc: "Exporta y restaura tu biblioteca completa con un solo click cuando quieras." },
-              { icon: <Shield size={32} />, title: "Sin Dependencias", desc: "Sin nube obligatoria. Sin rastreadores. Funciona perfectamente offline." }
+              { icon: <Lock size={32} />, title: "Biblioteca Local", desc: "Archivos cifrados en tu dispositivo." },
+              { icon: <Database size={32} />, title: "Backup Manual", desc: "Exporta y restaura tu biblioteca con un click." },
+              { icon: <Shield size={32} />, title: "Sin Dependencias", desc: "Funciona perfectamente offline." }
             ].map((feature, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 {...fadeIn}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white p-8 rounded-[32px] border border-[#E5DED3] hover:shadow-lg transition-shadow"
+                className="bg-white p-8 rounded-[32px] border border-[#E5DED3] hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
               >
                 <div className="text-[#A17808] mb-6">{feature.icon}</div>
-                <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
-                <p className="text-[#6B5C57] leading-relaxed">{feature.desc}</p>
+                <h3 className="text-xl md:text-2xl font-bold mb-4">{feature.title}</h3>
+                <p className="text-[#6B5C57] text-sm md:text-base leading-relaxed">{feature.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* READING EXPERIENCE (RECUPERADA) */}
-      <section className="max-w-7xl mx-auto px-6 py-32">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <motion.div {...fadeIn}>
+      {/* EXPERIENCE SECTION */}
+      <section className="max-w-7xl mx-auto px-6 py-20 md:py-32">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <motion.div {...fadeIn} className="order-2 lg:order-1">
             <Image
               src="/images/reading.png"
               alt="Reading Experience"
               width={500}
               height={1000}
-              className="rounded-[40px] shadow-2xl border border-[#E5DED3]"
+              className="rounded-[32px] md:rounded-[40px] shadow-2xl border border-[#E5DED3] w-full h-auto"
             />
           </motion.div>
-
-          <motion.div {...fadeIn}>
-            <p className="text-[#A17808] font-bold tracking-widest text-sm mb-4 uppercase">Experiencia de Lectura</p>
-            <h2 className="text-4xl lg:text-6xl font-bold leading-tight mb-8 tracking-tight">
-              Diseña tu propia atmósfera.
-            </h2>
-            
-            <div className="space-y-8">
+          <motion.div {...fadeIn} className="order-1 lg:order-2">
+            <p className="text-[#A17808] font-bold tracking-widest text-sm mb-4 uppercase">Experiencia</p>
+            <h2 className="text-3xl md:text-6xl font-bold leading-tight mb-8 tracking-tight">Diseña tu propia atmósfera.</h2>
+            <div className="space-y-6 md:space-y-8">
               {[
-                { icon: <Music />, title: "Atmósfera Sonora", desc: "Escucha música ambiental mientras lees e importa tus propios MP3 para concentrarte." },
-                { icon: <Mic />, title: "Ritmo Personalizado", desc: "Ajusta pausas, velocidad y cadencia de lectura para que se adapte a tu velocidad mental." },
-                { icon: <Search />, title: "Traducción y Búsqueda", desc: "Traduce palabras al instante, consulta significados y busca referencias en todo el libro." }
+                { icon: <Music />, title: "Atmósfera Sonora", desc: "Escucha música ambiental mientras lees." },
+                { icon: <Mic />, title: "Ritmo Personalizado", desc: "Ajusta la velocidad a tu ritmo mental." },
+                { icon: <Search />, title: "Traducción", desc: "Consulta significados al instante." }
               ].map((item, i) => (
-                <div key={i} className="flex gap-6">
+                <div key={i} className="flex gap-4 md:gap-6">
                   <div className="text-[#A17808] shrink-0">{item.icon}</div>
                   <div>
-                    <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
-                    <p className="text-[#6B5C57] leading-relaxed">{item.desc}</p>
+                    <h3 className="text-xl md:text-2xl font-bold mb-2">{item.title}</h3>
+                    <p className="text-[#6B5C57] text-sm md:text-base leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -200,31 +248,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* VOICE SECTION (LA PERLA) */}
-      <section className="bg-[#2B1712] text-white py-32 relative overflow-hidden">
-        {/* Luces decorativas de fondo */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#A17808] rounded-full blur-[150px] opacity-10" />
-        
+      {/* VOICE SECTION */}
+      <section className="bg-[#2B1712] text-white py-20 md:py-32 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
           <motion.div {...fadeIn}>
-            <p className="text-[#D9C4FF] font-bold tracking-widest text-sm mb-4 uppercase">La Perla</p>
-            <h2 className="text-5xl lg:text-7xl font-bold leading-tight mb-8 tracking-tight">
-              Interactúa con tu libro <br /> usando tu voz.
-            </h2>
-            <p className="text-xl text-[#C9BDB8] max-w-3xl mx-auto leading-relaxed mb-16">
-              Controla la lectura frase a frase usando comandos naturales en múltiples idiomas. Diseñado para cuando tienes las manos ocupadas o prefieres cerrar los ojos.
-            </p>
-
-            <div className="flex flex-wrap justify-center gap-4">
+            <p className="text-[#D4B15A] font-bold tracking-widest text-sm mb-4 uppercase">La Perla</p>
+            <h2 className="text-4xl md:text-7xl font-bold leading-tight mb-8 tracking-tight">Interactúa con tu libro usando tu voz.</h2>
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4 mt-12">
               {voiceCommands.map((command, i) => (
                 <motion.div
                   key={command}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.05 }}
-                  className="bg-white/10 border border-white/10 px-6 py-4 rounded-2xl text-lg font-medium backdrop-blur-sm hover:bg-white/20 transition-all cursor-default shadow-lg"
+                  className="bg-white/10 border border-white/10 px-4 py-2 md:px-6 md:py-4 rounded-xl md:rounded-2xl text-sm md:text-lg font-medium backdrop-blur-sm"
                 >
-                  <span className="text-[#A17808] mr-2">“</span>{command}<span className="text-[#A17808] ml-1">”</span>
+                  <span className="text-[#A17808] mr-1">“</span>{command}<span className="text-[#A17808] ml-1">”</span>
                 </motion.div>
               ))}
             </div>
@@ -233,20 +272,27 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="max-w-7xl mx-auto px-6 py-20">
-        <div className="border-t border-[#D8D2C8] pt-12 flex flex-col md:flex-row justify-between gap-10">
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-[#A17808] flex items-center justify-center text-white text-xs">📚</div>
-              <span className="text-2xl font-bold tracking-tighter">ReadMeBook</span>
+      <footer className="max-w-7xl mx-auto px-6 py-12 md:py-20">
+        <div className="border-t border-[#D8D2C8] pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="text-center md:text-left">
+            <div className="flex items-center gap-3">
+              {/* Contenedor exclusivo para la imagen del logo */}
+              <div className="relative w-10 h-10 shadow-lg shrink-0">
+                <Image
+                  src="/images/app_icon.png"
+                  alt="ReadMeBook Logo"
+                  fill
+                  sizes="40px"
+                  className="object-contain rounded-xl"
+                />
+              </div>
+
+              {/* El texto va fuera del div anterior para alinearse a su derecha */}
+              <span className="text-xl font-bold tracking-tight">
+                ReadMeBook
+              </span>
             </div>
-            <p className="text-[#6B5C57] max-w-sm leading-relaxed text-lg">
-              Una nueva forma de leer, escuchar y organizar tu conocimiento sin comprometer tu privacidad.
-            </p>
-          </div>
-          
-          <div className="flex flex-col justify-end text-[#6B5C57] font-medium">
-            <p>© 2026 ReadMeBook. Todos los derechos reservados.</p>
+            <p className="text-[#6B5C57] text-sm md:text-base">© 2026 ReadMeBook. Tu privacidad es lo primero.</p>
           </div>
         </div>
       </footer>
