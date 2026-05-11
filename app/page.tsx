@@ -171,7 +171,7 @@ export default function Home() {
                 <span className="font-semibold text-sm md:text-lg">Lectura Asistida</span>
               </div>
               <div className="flex flex-wrap gap-1.5 md:gap-2 text-[10px] md:text-sm font-medium">
-                {["“Acelera”", "“Siguiente”", "“Deletrea”"].map((cmd) => (
+                {["\u201CAcelera\u201D", "\u201CSiguiente\u201D", "\u201CDeletrea\u201D"].map((cmd) => (
                   <span key={cmd} className="bg-[#F4F1EA]/10 border border-[#F4F1EA]/10 px-2 md:px-3 py-1 rounded-full">
                     {cmd}
                   </span>
