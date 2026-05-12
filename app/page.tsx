@@ -51,7 +51,7 @@ export default function Home() {
     <main className="bg-[#F4F1EA] text-[#2B1712] overflow-hidden">
 
       {/* NAVBAR STICKY */}
-      <nav className="fixed top-0 w-full z-50 bg-[#F4F1EA]/80 backdrop-blur-md border-b border-[#D8D2C8]/50">
+      <nav className="fixed top-0 w-full z-50 bg-[#E7E0D3]/40 backdrop-blur-md border-b border-[#D8D2C8]/50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-3">
@@ -255,48 +255,48 @@ export default function Home() {
       </section>
       
       {/* SECCIÓN NUEVA: PARA QUIÉN ES */}
-      <section className="max-w-7xl mx-auto px-6 py-20 md:py-32">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-          {/* Estudiantes de Idiomas */}
-          <motion.div {...fadeIn} className="bg-white p-8 md:p-12 rounded-[40px] border border-[#E5DED3] shadow-sm">
-            <div className="flex items-center gap-4 mb-6 text-[#A17808]">
-              <Languages size={40} />
-              <h3 className="text-2xl md:text-3xl font-bold text-[#2B1712]">Estudiantes de idiomas</h3>
-            </div>
-            <ul className="space-y-4">
-              {[
-                "Escucha la pronunciación exacta de cada palabra.",
-                "Sincronía visual: mira cómo se escriben las palabras mientras las oyes.",
-                "Traducción contextual inmediata para ampliar vocabulario."
-              ].map((text, i) => (
-                <li key={i} className="flex items-start gap-3 text-[#6B5C57]">
-                  <CheckCircle2 size={20} className="text-[#A17808] shrink-0 mt-1" />
-                  <span className="text-sm md:text-base leading-relaxed">{text}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+      <section className="bg-[#E7E0D3]/40 mx-auto px-6 py-20 md:py-32">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+            {/* Estudiantes de Idiomas */}
+            <motion.div {...fadeIn} className="bg-white p-8 md:p-12 rounded-[40px] border border-[#E5DED3] shadow-sm">
+              <div className="flex items-center gap-4 mb-6 text-[#A17808]">
+                <Languages size={40} />
+                <h3 className="text-2xl md:text-3xl font-bold text-[#2B1712]">Estudiantes de idiomas</h3>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  "Escucha la pronunciación exacta de cada palabra.",
+                  "Sincronía visual: mira cómo se escriben las palabras mientras las oyes.",
+                  "Traducción contextual inmediata para ampliar vocabulario."
+                ].map((text, i) => (
+                  <li key={i} className="flex items-start gap-3 text-[#6B5C57]">
+                    <CheckCircle2 size={20} className="text-[#A17808] shrink-0 mt-1" />
+                    <span className="text-sm md:text-base leading-relaxed">{text}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
 
-          {/* Accesibilidad / Necesidades Especiales */}
-          <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="bg-white p-8 md:p-12 rounded-[40px] border border-[#E5DED3] shadow-sm">
-            <div className="flex items-center gap-4 mb-6 text-[#A17808]">
-              <Accessibility size={40} />
-              <h3 className="text-2xl md:text-3xl font-bold text-[#2B1712]">Lectura Inclusiva</h3>
-            </div>
-            <ul className="space-y-4">
-              {[
-                "Apoyo bimodal: lee y escucha al mismo tiempo para mejorar la comprensión.",
-                "Ritmo ajustable para personas con necesidades de procesamiento auditivo.",
-                "Navegación manos libres total mediante comandos de voz."
-              ].map((text, i) => (
-                <li key={i} className="flex items-start gap-3 text-[#6B5C57]">
-                  <CheckCircle2 size={20} className="text-[#A17808] shrink-0 mt-1" />
-                  <span className="text-sm md:text-base leading-relaxed">{text}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
+            {/* Accesibilidad / Necesidades Especiales */}
+            <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="bg-white p-8 md:p-12 rounded-[40px] border border-[#E5DED3] shadow-sm">
+              <div className="flex items-center gap-4 mb-6 text-[#A17808]">
+                <Accessibility size={40} />
+                <h3 className="text-2xl md:text-3xl font-bold text-[#2B1712]">Lectura Inclusiva</h3>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  "Apoyo bimodal: lee y escucha al mismo tiempo para mejorar la comprensión.",
+                  "Sincronía audio-visual diseñada para superar barreras de lectura y comprensión..",
+                  "Navegación manos libres total mediante comandos de voz."
+                ].map((text, i) => (
+                  <li key={i} className="flex items-start gap-3 text-[#6B5C57]">
+                    <CheckCircle2 size={20} className="text-[#A17808] shrink-0 mt-1" />
+                    <span className="text-sm md:text-base leading-relaxed">{text}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
       </section>
       {/* VOICE SECTION */}
       <section className="bg-[#2B1712] text-white py-20 md:py-32 relative overflow-hidden">
