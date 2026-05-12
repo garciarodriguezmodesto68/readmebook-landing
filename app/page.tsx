@@ -1,8 +1,11 @@
 "use client";
 
+"use client";
+
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 
 import {
   Shield,
@@ -15,6 +18,8 @@ import {
   Music,
   Database,
   ArrowRight,
+  Accessibility,
+  CheckCircle2,
 } from "lucide-react";
 
 const voiceCommands = [
@@ -38,7 +43,6 @@ const fadeIn = {
 export default function Home() {
   const triggerRef = useRef(null);
   
-  // Detección en el 50% de la pantalla (franja estrecha para evitar el efecto "fugaz")
   const isCentered = useInView(triggerRef, {
     margin: "-45% 0px -45% 0px"
   });
@@ -51,7 +55,6 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-3">
-              {/* Contenedor exclusivo para la imagen del logo */}
               <div className="relative w-10 h-10 shadow-lg shrink-0">
                 <Image
                   src="/images/app_icon.png"
@@ -61,22 +64,22 @@ export default function Home() {
                   className="object-contain rounded-xl"
                 />
               </div>
-
-              {/* El texto va fuera del div anterior para alinearse a su derecha */}
               <span className="text-xl font-bold tracking-tight">
                 ReadMeBook
               </span>
             </div>
           </div>
-          <button className="bg-[#A17808] text-white px-4 py-2 md:px-6 md:py-2.5 rounded-2xl hover:bg-[#8B6907] active:scale-95 transition-all duration-300 font-medium shadow-md text-sm md:text-base">
-            Descargar App
-          </button>
+          <Link
+            href="/contact"
+            className="bg-[#A17808] text-white px-4 py-2 md:px-6 md:py-2.5 rounded-2xl hover:bg-[#8B6907] active:scale-95 transition-all duration-300 font-medium shadow-md text-sm md:text-base"
+          >
+            Contacto
+          </Link>
         </div>
       </nav>
 
       {/* HERO SECTION */}
       <section className="relative max-w-7xl mx-auto px-6 pt-32 pb-24 lg:pt-48 lg:pb-32">
-        {/* AJUSTE: items-start para que el título aparezca arriba */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
           {/* LEFT CONTENT */}
@@ -84,7 +87,7 @@ export default function Home() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="lg:pt-4" // Espaciado extra para compensar el navbar
+            className="lg:pt-4"
           >
             <div className="inline-flex items-center gap-2 bg-[#E7E0D3] px-4 py-2 rounded-full mb-8 text-xs md:text-sm font-medium border border-[#D8D2C8]">
               <Shield size={16} className="text-[#A17808]" />
@@ -111,7 +114,13 @@ export default function Home() {
                 <ArrowRight size={20} />
               </button>
             </div>
-
+            <Link
+              href="/contact"
+              className="w-full sm:w-auto border border-[#2B1712] text-[#2B1712] px-8 py-4 rounded-2xl text-lg font-medium hover:bg-[#2B1712] hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              Contacto
+              <ArrowRight size={20} />
+            </Link>
             <div className="flex flex-wrap gap-3">
               {[
                 { icon: <BookOpen size={18} />, text: "Biblioteca Inteligente" },
@@ -128,8 +137,6 @@ export default function Home() {
 
           {/* RIGHT CONTENT (IMAGE + FLOATING CARD) */}
           <div className="relative mt-12 lg:mt-0 flex items-start justify-center">
-            
-            {/* TRIGGER: Ocupa el área de la imagen para detectar el scroll */}
             <div 
               ref={triggerRef} 
               className="absolute inset-0 w-full h-full pointer-events-none z-0" 
@@ -151,7 +158,6 @@ export default function Home() {
               />
             </motion.div>
 
-            {/* FLOATING CARD - Ajustada a la izquierda agresivamente */}
             <motion.div
               animate={{
                 opacity: isCentered ? 1 : 0,
@@ -163,7 +169,6 @@ export default function Home() {
                 x: { duration: 0.5 },
                 y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
               }}
-              // md:-left-48 para que no tape la imagen y flote a la izquierda
               className="absolute bottom-10 -left-6 md:-left-48 bg-[#2B1712] text-[#F4F1EA] p-4 md:p-6 rounded-2xl md:rounded-3xl shadow-2xl z-20 max-w-[180px] md:max-w-[260px] border border-white/20"
             >
               <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
@@ -171,7 +176,7 @@ export default function Home() {
                 <span className="font-semibold text-sm md:text-lg">Lectura Asistida</span>
               </div>
               <div className="flex flex-wrap gap-1.5 md:gap-2 text-[10px] md:text-sm font-medium">
-                {["\u201CAcelera\u201D", "\u201CSiguiente\u201D", "\u201CDeletrea\u201D"].map((cmd) => (
+                {["“Acelera”", "“Siguiente”", "“Deletrea”"].map((cmd) => (
                   <span key={cmd} className="bg-[#F4F1EA]/10 border border-[#F4F1EA]/10 px-2 md:px-3 py-1 rounded-full">
                     {cmd}
                   </span>
@@ -214,7 +219,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* EXPERIENCE SECTION */}
+      {/* EXPERIENCE SECTION - ACTUALIZADA CON BÚSQUEDA Y CONTEXTO */}
       <section className="max-w-7xl mx-auto px-6 py-20 md:py-32">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div {...fadeIn} className="order-2 lg:order-1">
@@ -233,7 +238,8 @@ export default function Home() {
               {[
                 { icon: <Music />, title: "Atmósfera Sonora", desc: "Escucha música ambiental mientras lees." },
                 { icon: <Mic />, title: "Ritmo Personalizado", desc: "Ajusta la velocidad a tu ritmo mental." },
-                { icon: <Search />, title: "Traducción", desc: "Consulta significados al instante." }
+                { icon: <Search />, title: "Contexto Inteligente", desc: "Busca personajes, ciudades o significados en el resto del libro al instante." },
+                { icon: <Languages />, title: "Traducción", desc: "Consulta significados y traducciones sin salir de la página." }
               ].map((item, i) => (
                 <div key={i} className="flex gap-4 md:gap-6">
                   <div className="text-[#A17808] shrink-0">{item.icon}</div>
@@ -271,12 +277,56 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SECCIÓN NUEVA: PARA QUIÉN ES */}
+      <section className="max-w-7xl mx-auto px-6 py-20 md:py-32">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+          {/* Estudiantes de Idiomas */}
+          <motion.div {...fadeIn} className="bg-white p-8 md:p-12 rounded-[40px] border border-[#E5DED3] shadow-sm">
+            <div className="flex items-center gap-4 mb-6 text-[#A17808]">
+              <Languages size={40} />
+              <h3 className="text-2xl md:text-3xl font-bold text-[#2B1712]">Estudiantes de idiomas</h3>
+            </div>
+            <ul className="space-y-4">
+              {[
+                "Escucha la pronunciación exacta de cada palabra.",
+                "Sincronía visual: mira cómo se escriben las palabras mientras las oyes.",
+                "Traducción contextual inmediata para ampliar vocabulario."
+              ].map((text, i) => (
+                <li key={i} className="flex items-start gap-3 text-[#6B5C57]">
+                  <CheckCircle2 size={20} className="text-[#A17808] shrink-0 mt-1" />
+                  <span className="text-sm md:text-base leading-relaxed">{text}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Accesibilidad / Necesidades Especiales */}
+          <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="bg-white p-8 md:p-12 rounded-[40px] border border-[#E5DED3] shadow-sm">
+            <div className="flex items-center gap-4 mb-6 text-[#A17808]">
+              <Accessibility size={40} />
+              <h3 className="text-2xl md:text-3xl font-bold text-[#2B1712]">Lectura Inclusiva</h3>
+            </div>
+            <ul className="space-y-4">
+              {[
+                "Apoyo bimodal: lee y escucha al mismo tiempo para mejorar la comprensión.",
+                "Ritmo ajustable para personas con necesidades de procesamiento auditivo.",
+                "Navegación manos libres total mediante comandos de voz."
+              ].map((text, i) => (
+                <li key={i} className="flex items-start gap-3 text-[#6B5C57]">
+                  <CheckCircle2 size={20} className="text-[#A17808] shrink-0 mt-1" />
+                  <span className="text-sm md:text-base leading-relaxed">{text}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+      </section>
+
       {/* FOOTER */}
       <footer className="max-w-7xl mx-auto px-6 py-12 md:py-20">
         <div className="border-t border-[#D8D2C8] pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-center md:text-left">
             <div className="flex items-center gap-3">
-              {/* Contenedor exclusivo para la imagen del logo */}
               <div className="relative w-10 h-10 shadow-lg shrink-0">
                 <Image
                   src="/images/app_icon.png"
@@ -286,13 +336,11 @@ export default function Home() {
                   className="object-contain rounded-xl"
                 />
               </div>
-
-              {/* El texto va fuera del div anterior para alinearse a su derecha */}
               <span className="text-xl font-bold tracking-tight">
                 ReadMeBook
               </span>
             </div>
-            <p className="text-[#6B5C57] text-sm md:text-base">© 2026 ReadMeBook. Tu privacidad es lo primero.</p>
+            <p className="text-[#6B5C57] text-sm md:text-base mt-2">© 2026 ReadMeBook. Tu privacidad es lo primero.</p>
           </div>
         </div>
       </footer>
