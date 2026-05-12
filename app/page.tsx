@@ -218,7 +218,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+      
       {/* EXPERIENCE SECTION - ACTUALIZADA CON BÚSQUEDA Y CONTEXTO */}
       <section className="max-w-7xl mx-auto px-6 py-20 md:py-32">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -253,30 +253,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
-      {/* VOICE SECTION */}
-      <section className="bg-[#2B1712] text-white py-20 md:py-32 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
-          <motion.div {...fadeIn}>
-            <p className="text-[#D4B15A] font-bold tracking-widest text-sm mb-4 uppercase">La Perla</p>
-            <h2 className="text-4xl md:text-7xl font-bold leading-tight mb-8 tracking-tight">Interactúa con tu libro usando tu voz.</h2>
-            <div className="flex flex-wrap justify-center gap-3 md:gap-4 mt-12">
-              {voiceCommands.map((command, i) => (
-                <motion.div
-                  key={command}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.05 }}
-                  className="bg-white/10 border border-white/10 px-4 py-2 md:px-6 md:py-4 rounded-xl md:rounded-2xl text-sm md:text-lg font-medium backdrop-blur-sm"
-                >
-                  <span className="text-[#A17808] mr-1">“</span>{command}<span className="text-[#A17808] ml-1">”</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
+      
       {/* SECCIÓN NUEVA: PARA QUIÉN ES */}
       <section className="max-w-7xl mx-auto px-6 py-20 md:py-32">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
@@ -318,6 +295,28 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+          </motion.div>
+        </div>
+      </section>
+      {/* VOICE SECTION */}
+      <section className="bg-[#2B1712] text-white py-20 md:py-32 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
+          <motion.div {...fadeIn}>
+            <p className="text-[#D4B15A] font-bold tracking-widest text-sm mb-4 uppercase">La Perla</p>
+            <h2 className="text-4xl md:text-7xl font-bold leading-tight mb-8 tracking-tight">Interactúa con tu libro usando tu voz.</h2>
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4 mt-12">
+              {voiceCommands.map((command, i) => (
+                <motion.div
+                  key={command}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="bg-white/10 border border-white/10 px-4 py-2 md:px-6 md:py-4 rounded-xl md:rounded-2xl text-sm md:text-lg font-medium backdrop-blur-sm"
+                >
+                  <span className="text-[#A17808] mr-1">“</span>{command}<span className="text-[#A17808] ml-1">”</span>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
