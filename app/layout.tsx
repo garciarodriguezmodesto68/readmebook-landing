@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react"; // Cambiado a /react que suele ser más estable
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +24,6 @@ export const metadata: Metadata = {
     "lectura inclusiva",
     "referencias cruzadas libros"
   ],
-  // Esto ayuda a que cuando compartas el link en WhatsApp o Twitter, se vea increíble
   openGraph: {
     title: "ReadMeBook - Tu biblioteca inteligente y privada",
     description: "Controla tu lectura por voz con tecnología OCR 100% local.",
@@ -41,7 +41,11 @@ export default function RootLayout({
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        {/* LA PIEZA QUE FALTABA: */}
+        <Analytics /> 
+      </body>
     </html>
   );
 }
