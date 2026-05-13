@@ -108,19 +108,28 @@ export default function Home() {
               La potencia de la IA, en tu dispositivo.
             </p>
 
-            <div className="flex flex-wrap gap-4 mb-12">
-              <button className="w-full sm:w-auto bg-[#2B1712] text-white px-8 py-4 rounded-2xl text-lg font-medium hover:bg-black hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 shadow-xl flex items-center justify-center gap-2">
+            {/* CONTENEDOR DE BOTONES - Apilados verticalmente */}
+            <div className="flex flex-col space-y-4 mb-12 w-full max-w-xl">
+              
+              {/* 1. BOTÓN DESCARGA: Arriba y ancho total */}
+              <Link
+                href="/download"
+                className="w-full bg-[#2B1712] text-white px-8 py-5 rounded-2xl text-lg font-bold hover:bg-black hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 shadow-xl flex items-center justify-center gap-2"
+              >
                 Descargar ahora
-                <ArrowRight size={20} />
-              </button>
+                <ArrowRight size={22} />
+              </Link>
+
+              {/* 2. BOTÓN CONTACTO: Debajo y ancho total */}
+              <Link
+                href="/contact"
+                className="w-full border-2 border-[#2B1712] text-[#2B1712] px-8 py-5 rounded-2xl text-lg font-bold hover:bg-[#2B1712] hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                Contacto
+                <ArrowRight size={22} />
+              </Link>
+              
             </div>
-            <Link
-              href="/contact"
-              className="w-full sm:w-auto border border-[#2B1712] text-[#2B1712] px-8 py-4 rounded-2xl text-lg font-medium hover:bg-[#2B1712] hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              Contacto
-              <ArrowRight size={20} />
-            </Link>
             <div className="flex flex-wrap gap-3">
               {[
                 { icon: <BookOpen size={18} />, text: "Biblioteca Inteligente" },
