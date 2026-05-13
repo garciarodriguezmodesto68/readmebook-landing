@@ -13,8 +13,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ReadMeBook - Tu biblioteca inteligente",
-  description: "Controla tu biblioteca por voz con privacidad 100% local.",
+  title: "ReadMeBook | Lector de eBooks Inteligente con OCR y Control por Voz",
+  description: "La app de lectura privada y 100% local. Importa tus libros, usa OCR para digitalizar textos y controla todo con comandos de voz. Sin nube, sin rastreo.",
+  keywords: [
+    "lector de ebooks inteligente",
+    "app lectura por voz",
+    "OCR para libros",
+    "biblioteca privada local",
+    "lectura inclusiva",
+    "referencias cruzadas libros"
+  ],
+  // Esto ayuda a que cuando compartas el link en WhatsApp o Twitter, se vea increíble
+  openGraph: {
+    title: "ReadMeBook - Tu biblioteca inteligente y privada",
+    description: "Controla tu lectura por voz con tecnología OCR 100% local.",
+    images: ["/images/app_icon.png"], 
+  },
 };
 
 export default function RootLayout({
@@ -24,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>

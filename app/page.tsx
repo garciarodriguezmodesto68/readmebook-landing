@@ -22,6 +22,25 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ReadMeBook",
+  "operatingSystem": "Android",
+  "applicationCategory": "ReadingApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "description": "Lector de eBooks inteligente con OCR local y control por voz. Privacidad 100% sin nube.",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "1" 
+  }
+};
+
 const voiceCommands = [
   "Acelera",
   "Siguiente párrafo",
@@ -49,7 +68,11 @@ export default function Home() {
 
   return (
     <main className="bg-[#F4F1EA] text-[#2B1712] overflow-hidden">
-
+      {/* Añade este bloque aquí abajo */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* NAVBAR STICKY */}
       <nav className="fixed top-0 w-full z-50 bg-[#E7E0D3]/40 backdrop-blur-md border-b border-[#D8D2C8]/50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -95,11 +118,11 @@ export default function Home() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] mb-8 tracking-tight">
-              Tu biblioteca inteligente.
+              Tu app para una biblioteca inteligente.
               <br />
               <span className="text-[#A17808]">Privada.</span>
               <br />
-              Controlada por voz.
+              Privada y controlada por voz.
             </h1>
 
             <p className="text-lg md:text-xl text-[#6B5C57] leading-relaxed mb-10 max-w-xl">
@@ -159,7 +182,7 @@ export default function Home() {
             >
               <Image
                 src="/images/library.png"
-                alt="ReadMeBook Library"
+                alt="Interfaz de la biblioteca ReadMeBook mostrando organización de libros locales y privacidad"
                 width={500}
                 height={1000}
                 priority
@@ -234,7 +257,7 @@ export default function Home() {
           <motion.div {...fadeIn} className="order-2 lg:order-1">
             <Image
               src="/images/reading.png"
-              alt="Reading Experience"
+              alt="Usuario utilizando el comando de voz para controlar la lectura en la app ReadMeBook"
               width={500}
               height={1000}
               className="rounded-[32px] md:rounded-[40px] shadow-2xl border border-[#E5DED3] w-full h-auto"
@@ -247,7 +270,7 @@ export default function Home() {
               {[
                 { icon: <Music />, title: "Atmósfera Sonora", desc: "Escucha música ambiental mientras lees." },
                 { icon: <Mic />, title: "Ritmo Personalizado", desc: "Ajusta la velocidad a tu ritmo mental." },
-                { icon: <Search />, title: "Contexto Inteligente", desc: "Busca personajes, ciudades o significados en el resto del libro al instante." },
+                { icon: <Search />, title: "Contexto Inteligente", desc: "Busca referencias cruzadas; personajes, ciudades o significados en el resto del libro al instante." },
                 { icon: <Languages />, title: "Traducción", desc: "Consulta significados y traducciones sin salir de la página." }
               ].map((item, i) => (
                 <div key={i} className="flex gap-4 md:gap-6">
@@ -274,7 +297,7 @@ export default function Home() {
               </div>
               <ul className="space-y-4">
                 {[
-                  "Escucha la pronunciación exacta de cada palabra.",
+                  "Escucha la pronunciación exacta de cada palabra del idioma del libro.",
                   "Sincronía visual: mira cómo se escriben las palabras mientras las oyes.",
                   "Traducción contextual inmediata para ampliar vocabulario."
                 ].map((text, i) => (
@@ -297,6 +320,46 @@ export default function Home() {
                   "Apoyo bimodal: lee y escucha al mismo tiempo para mejorar la comprensión.",
                   "Sincronía audio-visual diseñada para superar barreras de lectura y comprensión..",
                   "Navegación manos libres total mediante comandos de voz."
+                ].map((text, i) => (
+                  <li key={i} className="flex items-start gap-3 text-[#6B5C57]">
+                    <CheckCircle2 size={20} className="text-[#A17808] shrink-0 mt-1" />
+                    <span className="text-sm md:text-base leading-relaxed">{text}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* 3. Investigación y Oposiciones (Tu idea: preparar exámenes/manuscritos) */}
+            <motion.div {...fadeIn} transition={{ delay: 0.3 }} className="bg-white p-8 md:p-12 rounded-[40px] border border-[#E5DED3] shadow-sm">
+              <div className="flex items-center gap-4 mb-6 text-[#A17808]">
+                <Search size={40} />
+                <h3 className="text-2xl md:text-3xl font-bold text-[#2B1712]">Estudio y Oposiciones</h3>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  "Ideal para preparar exámenes analizando textos densos sin distracciones.",
+                  "Localiza conceptos clave y referencias cruzadas en segundos.",
+                  "Analiza manuscritos y documentos técnicos con un enfoque profundo."
+                ].map((text, i) => (
+                  <li key={i} className="flex items-start gap-3 text-[#6B5C57]">
+                    <CheckCircle2 size={20} className="text-[#A17808] shrink-0 mt-1" />
+                    <span className="text-sm md:text-base leading-relaxed">{text}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* 4. El Bloque Inventivo: Lectura "Manos Libres" / Estilo de Vida Proactiva */}
+            <motion.div {...fadeIn} transition={{ delay: 0.4 }} className="bg-white p-8 md:p-12 rounded-[40px] border border-[#E5DED3] shadow-sm">
+              <div className="flex items-center gap-4 mb-6 text-[#A17808]">
+                <Headphones size={40} />
+                <h3 className="text-2xl md:text-3xl font-bold text-[#2B1712]">Lectura Proactiva</h3>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  "Transforma cualquier texto, imagen, dictado por voz en un audiolibro interactivo.",
+                  "Control total por voz mientras cocinas, haces deporte o descansas.",
+                  "Sincronización mental: absorbe contenido mientras tus manos están ocupadas."
                 ].map((text, i) => (
                   <li key={i} className="flex items-start gap-3 text-[#6B5C57]">
                     <CheckCircle2 size={20} className="text-[#A17808] shrink-0 mt-1" />
