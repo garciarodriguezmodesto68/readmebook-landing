@@ -107,7 +107,7 @@ export default function Home() {
 
       {/* HERO SECTION */}
       <section className="relative max-w-7xl mx-auto px-6 pt-32 pb-24 lg:pt-48 lg:pb-32">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start min-h-[700px] lg:min-h-[700px]">
           {/* LEFT CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -120,7 +120,7 @@ export default function Home() {
               {t.hero_badge}
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] mb-8 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] mb-8 tracking-tight min-h-[180px] md:min-h-[220px] lg:min-h-[260px]">
               {t.hero_title_1}
               <br />
               <span className="text-[#A17808]">{t.hero_title_2}</span>
@@ -128,7 +128,7 @@ export default function Home() {
               {t.hero_title_3}
             </h1>
 
-            <p className="text-lg md:text-xl text-[#6B5C57] leading-relaxed mb-10 max-w-xl">
+            <p className="text-lg md:text-xl text-[#6B5C57] leading-relaxed mb-10 max-w-xl min-h-[80px] md:min-h-[90px]">
               {t.hero_desc}
             </p>
 
@@ -178,7 +178,7 @@ export default function Home() {
           </motion.div>
 
           {/* RIGHT CONTENT */}
-          <div className="relative mt-12 lg:mt-0 flex items-start justify-center">
+          <div className="relative mt-12 lg:mt-0 flex items-center justify-center h-full">
             <div
               ref={triggerRef}
               className="absolute inset-0 w-full h-full pointer-events-none z-0"
@@ -191,7 +191,7 @@ export default function Home() {
               className="relative z-10 bg-white rounded-[32px] md:rounded-[48px] p-3 md:p-4 shadow-2xl border border-[#E5DED3]"
             >
               <Image
-                src="/images/library.png"
+                src={t.hero_image_library}
                 alt="Interfaz de la biblioteca ReadMeBook mostrando organización de libros locales y privacidad"
                 width={500}
                 height={1000}
@@ -215,8 +215,7 @@ export default function Home() {
                   ease: "easeInOut",
                 },
               }}
-              className="absolute bottom-10 -left-6 md:-left-48 bg-[#2B1712] text-[#F4F1EA] p-4 md:p-6 rounded-2xl md:rounded-3xl shadow-2xl z-20 max-w-[180px] md:max-w-[260px] border border-white/20"
-            >
+              className="absolute bottom-10 -left-6 md:-left-10 bg-[#2B1712] text-[#F4F1EA] p-4 md:p-6 rounded-2xl md:rounded-3xl shadow-2xl z-20 max-w-[180px] md:max-w-[260px] border border-white/20">
               <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
                 <Headphones size={20} className="text-white/80" />
                 <span className="font-semibold text-sm md:text-lg">
@@ -302,7 +301,7 @@ export default function Home() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div {...fadeIn} className="order-2 lg:order-1">
             <Image
-              src="/images/reading.png"
+              src={t.hero_image_reading}
               alt="Usuario utilizando el comando de voz para controlar la lectura en la app ReadMeBook"
               width={500}
               height={1000}

@@ -127,7 +127,10 @@ export const translations = {
     download_footer_note: "Versión Beta 0.1 · Requiere Android 10 o superior",
 
     download_feedback_text: "¿Tienes una idea o sugerencia?",
-    download_feedback_link: "Cuéntanoslo en la página de contacto →"
+    download_feedback_link: "Cuéntanoslo en la página de contacto →",
+
+    hero_image_library: "/images/library.png",
+    hero_image_reading: "/images/reading.png"
   },
 
   en: {
@@ -257,6 +260,9 @@ export const translations = {
     download_footer_note: "Beta 0.1 · Requires Android 10 or higher",
 
     download_feedback_text: "Got an idea or suggestion?",
-    download_feedback_link: "Tell us on the contact page →"
+    download_feedback_link: "Tell us on the contact page →",
+
+    hero_image_library: "/images/library-en.png",
+    hero_image_reading: "/images/reading-en.png"
   },
 } as const;
