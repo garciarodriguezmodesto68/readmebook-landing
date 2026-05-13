@@ -4,6 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useLocale } from "@/src/i18n/useLocale";
+
 import { 
   ArrowLeft, 
   Download, 
@@ -13,6 +15,7 @@ import {
 } from "lucide-react";
 
 export default function DownloadPage() {
+  const { locale, setLocale, t } = useLocale("es");
   const apkUrl = "/downloads/readmebook.apk";
   const router = useRouter();
   
@@ -28,7 +31,7 @@ export default function DownloadPage() {
           className="inline-flex items-center gap-2 text-[#6B5C57] hover:text-[#A17808] transition-colors font-medium"
         >
           <ArrowLeft size={20} />
-          Volver atrás
+          {t.download_back}
         </button>
       </nav>
 
@@ -39,9 +42,9 @@ export default function DownloadPage() {
             <div className="bg-[#A17808]/10 p-4 rounded-3xl mb-6">
               <Download size={48} className="text-[#A17808]" />
             </div>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Únete a la Beta</h1>
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">{t.download_title}</h1>
             <p className="text-lg text-[#6B5C57] dark:text-[#A89993]">
-              Estás a un paso de probar el futuro de la lectura inteligente.
+              {t.download_subtitle}
             </p>
           </div>
 
@@ -49,9 +52,9 @@ export default function DownloadPage() {
             <div className="flex gap-4">
               <AlertTriangle className="text-[#A17808] shrink-0" size={24} />
               <div>
-                <h3 className="font-bold mb-1 text-[#2B1712] dark:text-[#F4F1EA]">Nota para Android</h3>
+                <h3 className="font-bold mb-1 text-[#2B1712] dark:text-[#F4F1EA]">{t.download_warning_title}</h3>
                 <p className="text-sm text-[#6B5C57] dark:text-[#A89993] leading-relaxed">
-                  Al descargar el APK, verás un aviso de <strong>"archivo dañino"</strong>. Selecciona <strong>"Descargar de todos modos"</strong>. Es un paso estándar para apps fuera de la Play Store.
+                  {t.download_warning_text}
                 </p>
               </div>
             </div>
@@ -63,8 +66,8 @@ export default function DownloadPage() {
                 <ShieldCheck size={20} />
               </div>
               <div>
-                <p className="font-medium text-[#2B1712] dark:text-[#F4F1EA]">Privacidad Total</p>
-                <p className="text-sm text-[#6B5C57] dark:text-[#A89993]">Procesamiento local, sin datos en la nube.</p>
+                <p className="font-medium text-[#2B1712] dark:text-[#F4F1EA]">{t.download_feature_privacy_title}</p>
+                <p className="text-sm text-[#6B5C57] dark:text-[#A89993]">{t.download_feature_privacy_desc}</p>
               </div>
             </div>
             <div className="flex gap-4 items-start">
@@ -72,8 +75,8 @@ export default function DownloadPage() {
                 <MessageSquare size={20} />
               </div>
               <div>
-                <p className="font-medium text-[#2B1712] dark:text-[#F4F1EA]">Versión en desarrollo</p>
-                <p className="text-sm text-[#6B5C57] dark:text-[#A89993]">Tu feedback es vital para mejorar la experiencia.</p>
+                <p className="font-medium text-[#2B1712] dark:text-[#F4F1EA]">{t.download_feature_beta_title}</p>
+                <p className="text-sm text-[#6B5C57] dark:text-[#A89993]">{t.download_feature_beta_desc}</p>
               </div>
             </div>
           </div>
@@ -94,11 +97,7 @@ export default function DownloadPage() {
                   : "bg-[#A17808] text-white hover:bg-[#8B6907]"
               }`}
             >
-              {isDownloading ? (
-                <span className="animate-pulse">Preparando descarga...</span>
-              ) : (
-                "Descargar APK (Android)"
-              )}
+              {isDownloading ? t.download_preparing : t.download_button}
             </a>
             
             <button
@@ -107,19 +106,19 @@ export default function DownloadPage() {
               onClick={() => router.back()}
               className="w-full bg-transparent border border-[#D8D2C8] dark:border-[#3D2620] text-[#2B1712] dark:text-[#A89993] py-4 rounded-2xl hover:bg-[#F4F1EA] dark:hover:bg-[#2B1712] transition-colors font-medium disabled:opacity-50"
             >
-              {isDownloading ? "Volviendo..." : "Cancelar y volver"}
+              {isDownloading ? t.download_returning : t.download_cancel}
             </button>
 
             <p className="text-center text-[10px] text-[#6B5C57] opacity-60 mt-2">
-              Versión Beta 0.1 · Requiere Android 10 o superior
+              {t.download_footer_note}
             </p>
           </div>
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-[#6B5C57] mb-4 text-sm md:text-base">¿Tienes una idea o sugerencia?</p>
+          <p className="text-[#6B5C57] mb-4 text-sm md:text-base">{t.download_feedback_text}</p>
           <Link href="/contact" className="text-[#A17808] font-bold hover:underline underline-offset-4">
-            Cuéntanoslo en la página de contacto →
+            {t.download_feedback_link}
           </Link>
         </div>
       </section>

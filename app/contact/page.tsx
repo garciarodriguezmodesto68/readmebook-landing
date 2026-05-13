@@ -2,9 +2,11 @@
 
 import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
+import { useLocale } from "@/src/i18n/useLocale";
 
 
 export default function ContactPage() {
+  const { locale, setLocale, t } = useLocale("es");
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -63,10 +65,10 @@ export default function ContactPage() {
       <div className="w-full max-w-xl bg-white dark:bg-[#1E1A17] p-8 md:p-12 rounded-[32px] shadow-xl border border-[#E5DED3] dark:border-[#2B1712]">
 
         {/* Título: marrón oscuro en claro, crema en dark */}
-        <h1 className="text-3xl font-bold mb-2 text-[#2B1712] dark:text-[#F4F1EA]">Contacto</h1>
+        <h1 className="text-3xl font-bold mb-2 text-[#2B1712] dark:text-[#F4F1EA]">{t.contact_title}</h1>
 
         <p className="text-[#6B5C57] dark:text-[#A89993] mb-8">
-          Escríbenos y te responderemos lo antes posible.
+          {t.contact_subtitle}
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -82,7 +84,7 @@ export default function ContactPage() {
           <div>
             <input
               type="text"
-              placeholder="Nombre"
+              placeholder={t.contact_name_placeholder}
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               className="w-full p-4 bg-white dark:bg-[#2B1712] border border-[#E5DED3] dark:border-[#3D2620] rounded-2xl text-[#2B1712] dark:text-[#F4F1EA] placeholder-[#6B5C57] dark:placeholder-[#A89993]/50 focus:outline-none focus:ring-2 focus:ring-[#A17808] transition-all"
@@ -93,7 +95,7 @@ export default function ContactPage() {
           <div>
             <input
               type="email"
-              placeholder="Email"
+              placeholder={t.contact_email_placeholder}
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               className={`w-full p-4 bg-white dark:bg-[#2B1712] border rounded-2xl text-[#2B1712] dark:text-[#F4F1EA] placeholder-[#6B5C57] dark:placeholder-[#A89993]/50 focus:outline-none focus:ring-2 focus:ring-[#A17808] transition-all ${
@@ -107,7 +109,7 @@ export default function ContactPage() {
 
           <div>
             <textarea
-              placeholder="Mensaje"
+              placeholder={t.contact_message_placeholder}
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
               className="w-full p-4 bg-white dark:bg-[#2B1712] border border-[#E5DED3] dark:border-[#3D2620] rounded-2xl text-[#2B1712] dark:text-[#F4F1EA] placeholder-[#6B5C57] dark:placeholder-[#A89993]/50 h-32 focus:outline-none focus:ring-2 focus:ring-[#A17808] transition-all resize-none"
@@ -121,7 +123,7 @@ export default function ContactPage() {
               disabled={!isValid || status === "loading"}
               className="bg-[#A17808] text-white px-6 py-4 rounded-2xl hover:bg-[#8B6907] active:scale-95 transition-all duration-300 font-medium shadow-md text-lg disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              {status === "loading" ? "Enviando..." : "Enviar mensaje"}
+              {status === "loading" ? t.contact_button_sending : t.contact_button_send}
             </button>
 
             <button
@@ -129,19 +131,19 @@ export default function ContactPage() {
                 onClick={() => router.back()} // 3. Usa back() en lugar de push("/")
                 className="w-full bg-transparent border border-[#D8D2C8] dark:border-[#3D2620] text-[#2B1712] dark:text-[#A89993] py-3 rounded-2xl hover:bg-[#F4F1EA] dark:hover:bg-[#2B1712] transition-colors font-medium"
                 >
-                Cancelar y volver
+                {t.contact_button_cancel}
             </button>
           </div>
 
           {status === "sent" && (
             <p className="text-green-600 dark:text-green-400 text-center font-medium">
-              ¡Mensaje enviado con éxito! ✔
+              {t.contact_success}
             </p>
           )}
 
           {status === "error" && (
             <p className="text-red-600 dark:text-red-400 text-center font-medium">
-              Hubo un error. Por favor, inténtalo de nuevo.
+              {t.contact_error}
             </p>
           )}
         </form>
