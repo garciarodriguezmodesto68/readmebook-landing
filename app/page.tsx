@@ -149,6 +149,11 @@ export default function Home() {
                 {t.nav_contact}
                 <ArrowRight size={22} />
               </Link>
+              <Link
+                href="/free-books"
+                className="text-sm font-medium text-[#6B5C57] hover:text-[#A17808] transition-colors underline">
+                {locale === "es" ? "¿Dónde descargar libros gratis?" : "Where to get free eBooks?"}
+              </Link>
             </div>
 
             <div className="flex flex-wrap gap-3">

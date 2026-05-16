@@ -130,8 +130,23 @@ export const translations = {
     download_feedback_link: "Cuéntanoslo en la página de contacto →",
 
     hero_image_library: "/images/library.png",
-    hero_image_reading: "/images/reading.png"
-  },
+    hero_image_reading: "/images/reading.png",
+
+    books_badge: "Ecosistema ReadMeBook",
+    books_title: "Descarga eBooks gratis y",
+    books_title_color: "100% legales",
+    books_subtitle: "¿No tienes ningún archivo a mano para probar la app? Te recomendamos las mejores plataformas limpias, seguras y sin anuncios para nutrir tu biblioteca local en tu móvil.",
+    books_visit_button: "Visitar sitio oficial",
+    books_gutenberg_title: "Project Gutenberg",
+    books_gutenberg_desc: "La madre de todas las bibliotecas de dominio público. Más de 70.000 libros libres de derechos, ideal para descargar grandes clásicos universales en formato ePub.",
+    books_elejandria_title: "Elejandría",
+    books_elejandria_desc: "Un sitio web en castellano con una interfaz hermosa y minimalista. Ofrecen grandes clásicos de la literatura optimizados perfectamente para lectura móvil.",
+    books_bdh_title: "BNE Digital",
+    books_bdh_desc: "La plataforma oficial de acceso al patrimonio digital de la Biblioteca Nacional de España. Contiene miles de obras históricas, manuscritos y joyas literarias digitalizadas.",
+    books_feedbooks_title: "Feedbooks (Dominio Público)",
+    books_feedbooks_desc: "Una excelente biblioteca virtual con un catálogo muy amplio de libros gratuitos clasificados con portadas de alta calidad y listos para importar."
+
+      },
 
   en: {
     nav_contact: "Contact",
@@ -263,6 +278,20 @@ export const translations = {
     download_feedback_link: "Tell us on the contact page →",
 
     hero_image_library: "/images/library-en.png",
-    hero_image_reading: "/images/reading-en.png"
-  },
-} as const;
+    hero_image_reading: "/images/reading-en.png",
+
+    books_badge: "ReadMeBook Ecosystem",
+    books_title: "Download free and",
+    books_title_color: "100% legal eBooks",
+    books_subtitle: "Don't have any files on your device to test the app? We recommend the best clean, secure, and ad-free platforms to stock your local library on your phone.",
+    books_visit_button: "Visit official site",
+    books_gutenberg_title: "Project Gutenberg",
+    books_gutenberg_desc: "The mother of all public domain libraries. Over 70,000 copyright-free books, perfect for downloading world classics in ePub format.",
+    books_elejandria_title: "Elejandría",
+    books_elejandria_desc: "A Spanish-based website with a beautiful, minimalist interface. It offers great classical literature optimized perfectly for mobile reading.",
+    books_bdh_title: "BNE Digital",
+    books_bdh_desc: "The official digital heritage platform of the National Library of Spain. It contains thousands of digitized historical masterworks, manuscripts, and literary gems.",
+    books_feedbooks_title: "Feedbooks (Public Domain)",
+    books_feedbooks_desc: "An excellent virtual library with a wide catalog of free public domain books, beautifully cataloged with high-quality covers and ready to import."
+  }
+}
