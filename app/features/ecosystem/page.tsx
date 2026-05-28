@@ -59,7 +59,7 @@ export default function EcosystemPage() {
 
           <div className="relative z-10 bg-white rounded-[32px] md:rounded-[48px] p-3 md:p-4 shadow-2xl border border-[#E5DED3]">
             <Image
-                src={t.reading_features}
+                src={t.pure_reading_experience}
                 alt="Interfaz de los modos de lectura detallados en la app ReadMeBook"
                 width={500}
                 height={1000}
