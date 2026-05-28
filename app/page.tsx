@@ -223,7 +223,7 @@ export default function Home() {
               className="relative z-10 bg-white rounded-[32px] md:rounded-[48px] p-3 md:p-4 shadow-2xl border border-[#E5DED3]"
             >
               <Image
-                src={t.hero_image_library}
+                src={t.local_storage}
                 alt="Interfaz de la biblioteca ReadMeBook mostrando organización de libros locales y privacidad"
                 width={500}
                 height={1000}

@@ -132,6 +132,7 @@ export const translations = {
     hero_image_library: "/images/library.png",
     hero_image_reading: "/images/reading.png",
     reading_features: "/images/reading_features.png",
+    local_storage: "/images/local_storage-en.png",
     privacy_local_control: "/images/privacy_local_control.png",
     pure_reading_experience: "/images/pure_reading_experience.png",
     assisted_inclusive_reading: "/images/assisted_inclusive_reading.png",
@@ -286,7 +287,8 @@ export const translations = {
 
     hero_image_library: "/images/library-en.png",
     hero_image_reading: "/images/reading-en.png",
-    reading_features: "/images/reading_features-en.png",
+    reading_features: "/images/reading_features.png",
+    local_storage: "/images/local_storage-en.png",
     pure_reading_experience: "/images/pure_reading_experience-en.png",
     assisted_inclusive_reading: "/images/assisted_inclusive_reading-en.png",
     book_creator_importer_01: "/images/book_creator_importer_01-en.png",
