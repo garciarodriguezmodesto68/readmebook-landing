@@ -131,6 +131,7 @@ export const translations = {
 
     hero_image_library: "/images/library.png",
     hero_image_reading: "/images/reading.png",
+    reading_features: "/images/reading_features.png",
 
     books_badge: "Ecosistema ReadMeBook",
     books_title: "Descarga eBooks gratis y",
@@ -279,6 +280,7 @@ export const translations = {
 
     hero_image_library: "/images/library-en.png",
     hero_image_reading: "/images/reading-en.png",
+    reading_features: "/images/reading_features-en.png",
 
     books_badge: "ReadMeBook Ecosystem",
     books_title: "Download free and",

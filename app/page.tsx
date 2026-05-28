@@ -19,6 +19,11 @@ import {
   ArrowRight,
   Accessibility,
   CheckCircle2,
+  PenTool, 
+  Sparkles, 
+  Camera, 
+  Type,
+  FileUp
 } from "lucide-react";
 
 const jsonLd = {
@@ -133,7 +138,7 @@ export default function Home() {
             </p>
 
             {/* BOTONES */}
-            <div className="flex flex-col space-y-4 mb-12 w-full max-w-xl">
+            <div className="flex flex-col space-y-4 mb-6 w-full max-w-xl">
               <Link
                 href="/download"
                 className="w-full bg-[#2B1712] text-white px-8 py-5 rounded-2xl text-lg font-bold hover:bg-black hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 shadow-xl flex items-center justify-center gap-2"
@@ -149,10 +154,32 @@ export default function Home() {
                 {t.nav_contact}
                 <ArrowRight size={22} />
               </Link>
+              
               <Link
                 href="/free-books"
-                className="text-sm font-medium text-[#6B5C57] hover:text-[#A17808] transition-colors underline">
+                className="text-[22px] font-bold text-[#2B1712] hover:text-[#A17808] transition-colors underline block text-center pt-2"
+              >
                 {locale === "es" ? "¿Dónde descargar libros gratis?" : "Where to get free eBooks?"}
+              </Link>
+            </div>
+
+            {/* ENLACES RÁPIDOS COMPLEMENTARIOS */}
+            <div className="flex flex-wrap gap-x-4 gap-y-2 mb-12 text-sm text-[#6B5C57]">
+              <span className="font-semibold">{locale === "es" ? "Secciones avanzadas:" : "Advanced sections:"}</span>
+              <Link href="/features/ecosystem" className="underline hover:text-[#A17808] transition-colors">
+                {locale === "es" ? "Gestión y Privacidad" : "Admin & Privacy"}
+              </Link>
+              <span>•</span>
+              <Link href="/features/reading-experience" className="underline hover:text-[#A17808] transition-colors">
+                {locale === "es" ? "Modos de Lectura" : "Reading Modes"}
+              </Link>
+              <span>•</span>
+              <Link href="/features/assisted-reading" className="underline hover:text-[#A17808] transition-colors">
+                {locale === "es" ? "Asistida" : "Assisted"}
+              </Link>
+              <span>•</span>
+              <Link href="/features/book-creator" className="underline hover:text-[#A17808] transition-colors">
+                {locale === "es" ? "Creador" : "Creator"}
               </Link>
             </div>
 
@@ -296,6 +323,73 @@ export default function Home() {
                   {feature.desc}
                 </p>
               </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* INTERACTIVE ROLES / FEATURES NAVIGATION SECTION */}
+      <section className="bg-white py-20 md:py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div {...fadeIn} className="text-center max-w-3xl mx-auto mb-16">
+            <p className="text-[#A17808] font-bold tracking-widest text-sm mb-4 uppercase">
+              {locale === "es" ? "Explora la App" : "Explore the App"}
+            </p>
+            <h2 className="text-3xl md:text-6xl font-bold mb-6 tracking-tight">
+              {locale === "es" ? "Diseñado para cada perfil de lectura" : "Tailored for every reading profile"}
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+            {[
+              {
+                title: locale === "es" ? "🔒 Privacidad y Control Local" : "🔒 Privacy & Local Control",
+                desc: locale === "es" ? "Configura tu login de inicio, gestiona categorías avanzadas y mantén tus datos 100% destruibles y locales." : "Set up your startup login, manage advanced categories, and keep your data 100% destructible and local.",
+                link: "/features/ecosystem",
+                badge: locale === "es" ? "Usuarios General" : "General Users"
+              },
+              {
+                title: locale === "es" ? "🌙 Experiencia de Lectura Pura" : "🌙 Pure Reading Experience",
+                desc: locale === "es" ? "Modo oscuro real para pantallas OLED, prevención de bloqueo de pantalla y sistema de notas inteligente." : "Real dark mode for OLED screens, screen-lock prevention, and smart note-taking system.",
+                link: "/features/reading-experience",
+                badge: locale === "es" ? "Lectores Empedernidos" : "Avid Readers"
+              },
+              {
+                title: locale === "es" ? "🎙️ Lectura Asistida e Inclusiva" : "🎙️ Assisted & Inclusive Reading",
+                desc: locale === "es" ? "Comandos de voz manos libres, motor TTS con control de velocidad para opositores y traducción en tiempo real." : "Hands-free voice commands, speed-controlled TTS engine for exam candidates, and real-time translation.",
+                link: "/features/assisted-reading",
+                badge: locale === "es" ? "Estudiantes y Accesibilidad" : "Students & Accessibility"
+              },
+              {
+                title: locale === "es" ? "✨ Creador e Importador de Libros" : "✨ Book Creator & Importer",
+                desc: locale === "es" ? "Importa ePub/TXT, digitaliza páginas reales con la cámara OCR, dicta texto y diseña portadas con consulta a IA." : "Import ePub/TXT, digitize physical pages via OCR camera, dictate text, and design covers with AI queries.",
+                link: "/features/book-creator",
+                badge: locale === "es" ? "Creadores y Autores" : "Creators & Authors"
+              }
+            ].map((item, i) => (
+              <Link href={item.link} key={i}>
+                <motion.div
+                  {...fadeIn}
+                  transition={{ delay: i * 0.05 }}
+                  className="bg-[#F4F1EA] p-8 md:p-10 rounded-[32px] border border-[#E5DED3] hover:border-[#A17808] hover:bg-[#E7E0D3]/50 transition-all duration-300 group cursor-pointer h-full flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="inline-block bg-[#2B1712] text-white text-xs px-3 py-1 rounded-full font-medium mb-4">
+                      {item.badge}
+                    </span>
+                    <h3 className="text-2xl font-bold mb-4 text-[#2B1712] group-hover:text-[#A17808] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-[#6B5C57] text-sm md:text-base leading-relaxed mb-6">
+                      {item.desc}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2 text-[#A17808] font-semibold text-sm group-hover:translate-x-2 transition-transform">
+                    {locale === "es" ? "Ver funciones detalladas" : "View detailed features"} 
+                    <ArrowRight size={16} />
+                  </div>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
@@ -498,6 +592,75 @@ export default function Home() {
               ))}
             </ul>
           </motion.div>
+        </div>
+      </section>
+
+      {/* CREATION SECTION - "Design your own books" */}
+      <section className="bg-white py-20 md:py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div {...fadeIn} className="text-center max-w-3xl mx-auto mb-16">
+            <p className="text-[#A17808] font-bold tracking-widest text-sm mb-4 uppercase">
+              {locale === "es" ? "Crea sin límites" : "Creation without limits"}
+            </p>
+            <h2 className="text-3xl md:text-6xl font-bold mb-6 tracking-tight">
+              {locale === "es" ? "Diseña tus propios libros" : "Design your own books"}
+            </h2>
+            <p className="text-lg md:text-xl text-[#6B5C57] leading-relaxed">
+              {locale === "es" 
+                ? "ReadMeBook no es solo para leer. Es tu espacio para capturar ideas, digitalizar textos físicos, importar contenido o dejar que la IA dé forma a tus historias."
+                : "ReadMeBook is not just for reading. It's your space to capture ideas, digitize physical texts, import content, or let AI shape your stories."}
+            </p>
+          </motion.div>
+
+          {/* Rejilla adaptada a 5 elementos para mantener la simetría visual */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 justify-center">
+            {[
+              {
+                icon: <Type size={32} />,
+                title: locale === "es" ? "Escritura Directa" : "Direct Writing",
+                desc: locale === "es" ? "Plasma tus pensamientos directamente en la app con un editor limpio y sin distracciones." : "Capture your thoughts directly in the app with a clean, distraction-free editor."
+              },
+              {
+                icon: <Mic size={32} />,
+                title: locale === "es" ? "Dictado por Voz" : "Voice Dictation",
+                desc: locale === "es" ? "Habla y deja que la app escriba por ti. Ideal para capturar ráfagas de inspiración sobre la marcha." : "Speak and let the app write for you. Ideal for capturing bursts of inspiration on the go."
+              },
+              {
+                icon: <Camera size={32} />,
+                title: locale === "es" ? "Escaneo OCR" : "OCR Scanning",
+                desc: locale === "es" ? "Convierte cualquier libro físico o documento en un eBook digital simplemente usando tu cámara." : "Convert any physical book or document into a digital eBook simply by using your camera."
+              },
+              {
+                icon: <Sparkles size={32} />,
+                title: locale === "es" ? "Asistente IA" : "AI Assistant",
+                desc: locale === "es" ? "Genera contenido, resume ideas o consulta a la IA para expandir tus propios conocimientos." : "Generate content, summarize ideas, or consult the AI to expand your own knowledge."
+              },
+              {
+                icon: <FileUp size={32} />,
+                title: locale === "es" ? "Importar Portadas y Archivos" : "Import Covers & Files",
+                desc: locale === "es" ? "Personaliza tus creaciones subiendo tus propias portadas, imágenes de archivo o documentos externos." : "Customize your creations by uploading your own covers, stock images, or external documents."
+              }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                {...fadeIn}
+                transition={{ delay: i * 0.1 }}
+                className={`bg-[#F4F1EA] p-8 rounded-[32px] border border-[#E5DED3] hover:bg-[#E7E0D3] transition-all duration-300 group ${
+                  i === 4 ? "md:col-span-2 lg:col-span-1" : ""
+                }`}
+              >
+                <div className="text-[#A17808] mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-[#2B1712]">
+                  {item.title}
+                </h3>
+                <p className="text-[#6B5C57] text-sm leading-relaxed">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
