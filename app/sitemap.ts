@@ -25,5 +25,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/free-books`,
       lastModified: currentDate,
     },
+    {
+      url: `${baseUrl}/download`,
+      lastModified: currentDate,
+    },
+    {
+      url: `${baseUrl}/ecosystem`,
+      lastModified: currentDate,
+    },
+    {
+      url: `${baseUrl}/reading-experience`,
+      lastModified: currentDate,
+    },
+    {
+      url: `${baseUrl}/assisted-reading`,
+      lastModified: currentDate,
+    },
+    {
+      url: `${baseUrl}/book-creator`,
+      lastModified: currentDate,
+    },
   ]
 }
