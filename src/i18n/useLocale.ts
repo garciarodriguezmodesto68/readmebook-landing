@@ -15,7 +15,8 @@ export function useLocale(initial: Locale = "es") {
     localStorage.setItem("locale", locale);
   }, [locale]);
 
-  const t = translations[locale] ?? translations.es;
+  // 👇 FIX CLAVE: fuerza tipo consistente
+  const t = translations[locale] as typeof translations["es"];
 
   return {
     locale,

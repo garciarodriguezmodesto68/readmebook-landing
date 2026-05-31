@@ -1,13 +1,13 @@
 "use client";
 
 import { useLocale } from "@/src/i18n/useLocale";
-import { ArrowLeft, Sparkles, Camera, FileText, FolderPlus } from "lucide-react";
+import { ArrowLeft, Sparkles, Camera, FolderPlus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function BookCreatorPage() {
-  const { locale } = useLocale("es");
+  const { locale, t } = useLocale("es");
   const router = useRouter();
 
   const [mounted, setMounted] = useState(false);
@@ -16,16 +16,16 @@ export default function BookCreatorPage() {
   const stepsImages = [
     {
       src: "/images/book_creator_importer_01-en.png",
-      alt: locale === "es" ? "Libro vacío" : "Empty book"
+      alt: t.book_creator_step_1_alt,
     },
     {
       src: "/images/book_creator_importer_02-en.png",
-      alt: locale === "es" ? "Escaneo con cámara" : "Camera scanning"
+      alt: t.book_creator_step_2_alt,
     },
     {
       src: "/images/book_creator_importer_03-en.png",
-      alt: locale === "es" ? "Resultado del escaneo" : "Scan result"
-    }
+      alt: t.book_creator_step_3_alt,
+    },
   ];
 
   useEffect(() => {
@@ -53,26 +53,22 @@ export default function BookCreatorPage() {
           className="inline-flex items-center gap-2 text-[#6B5C57] hover:text-[#A17808] transition-colors font-medium"
         >
           <ArrowLeft size={20} />
-          {locale === "es" ? "Volver" : "Back"}
+          {locale === "es" ? t.assisted_back : t.assisted_back}
         </button>
 
         <div className="max-w-3xl mb-16">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-            {locale === "es"
-              ? "Creador e Importador de Libros"
-              : "Book Creator & Importer"}
+            {t.book_creator_title}
           </h1>
 
           <p className="text-lg md:text-xl text-[#6B5C57] leading-relaxed">
-            {locale === "es"
-              ? "Pasa de lector a creador..."
-              : "Go from reader to creator..."}
+            {t.book_creator_desc}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
 
-          {/* 🎬 FADE SIN CAMBIAR TAMAÑO ORIGINAL */}
+          {/* VISUAL */}
           <div className="relative z-10 bg-white rounded-[32px] md:rounded-[48px] p-3 md:p-4 shadow-2xl border border-[#E5DED3] overflow-hidden">
 
             <div className="relative">
@@ -98,7 +94,6 @@ export default function BookCreatorPage() {
                 );
               })}
 
-              {/* spacer para mantener altura natural */}
               <Image
                 src={stepsImages[0].src}
                 alt="spacer"
@@ -107,10 +102,9 @@ export default function BookCreatorPage() {
                 className="w-full h-auto opacity-0"
               />
             </div>
-
           </div>
 
-          {/* TEXTO SIN CAMBIOS */}
+          {/* FEATURES */}
           <div className="space-y-8 lg:order-1">
 
             <div className="flex gap-4">
@@ -119,14 +113,10 @@ export default function BookCreatorPage() {
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">
-                  {locale === "es"
-                    ? "Importación de ePub y TXT"
-                    : "ePub & TXT Import"}
+                  {t.book_creator_import_title}
                 </h3>
                 <p className="text-[#6B5C57] text-sm">
-                  {locale === "es"
-                    ? "Sube tus archivos..."
-                    : "Upload your files..."}
+                  {t.book_creator_import_desc}
                 </p>
               </div>
             </div>
@@ -137,14 +127,10 @@ export default function BookCreatorPage() {
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">
-                  {locale === "es"
-                    ? "Escaneo OCR"
-                    : "OCR Scanning"}
+                  {t.book_creator_ocr_title}
                 </h3>
                 <p className="text-[#6B5C57] text-sm">
-                  {locale === "es"
-                    ? "Digitaliza páginas..."
-                    : "Digitize pages..."}
+                  {t.book_creator_ocr_desc}
                 </p>
               </div>
             </div>
@@ -155,14 +141,10 @@ export default function BookCreatorPage() {
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">
-                  {locale === "es"
-                    ? "IA"
-                    : "AI"}
+                  {t.book_creator_ai_title}
                 </h3>
                 <p className="text-[#6B5C57] text-sm">
-                  {locale === "es"
-                    ? "Crea libros con IA..."
-                    : "Create books with AI..."}
+                  {t.book_creator_ai_desc}
                 </p>
               </div>
             </div>
